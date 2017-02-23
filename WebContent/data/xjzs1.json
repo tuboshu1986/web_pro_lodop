@@ -1,0 +1,19 @@
+{
+	"fontName":"微软雅黑",
+	"fontSize":20,
+	"elems":{
+		"zsbh":{"name":"zsbh","top":141,"left":198,"w":468,"h":67,"val":""},
+		"yxqzkzn":{"name":"yxqzkzn","top":483,"left":261,"w":126,"h":84,"val":""},
+		"jddc":{"name":"jddc","top":219,"left":289,"w":376,"h":78,"val":""},
+		"gsmcyw":{"name":"gsmcyw","top":303,"left":318,"w":346,"h":75,"val":""},
+		"fzrqkzr":{"name":"fzrqkzr","top":921,"left":537,"w":59,"h":78,"val":""},
+		"yxqzr":{"name":"yxqzr","top":480,"left":514,"w":63,"h":79,"val":""},
+		"fzrqkzy":{"name":"fzrqkzy","top":921,"left":426,"w":58,"h":78,"val":""},
+		"gszcd":{"name":"gszcd","top":388,"left":295,"w":373,"h":72,"val":""},
+		"ZZEWM":{"name":"ZZEWM","top":663,"left":121,"w":198,"h":195,"val":""},
+		"fzrqkzn":{"name":"fzrqkzn","top":921,"left":261,"w":127,"h":79,"val":""},
+		"yxqzkzy":{"name":"yxqzkzy","top":483,"left":423,"w":60,"h":81,"val":""},
+		"ZZQZ":{"name":"ZZQZ","top":798,"left":451,"w":144,"h":94,"val":""},
+		"ZZYWM":{"name":"ZZYWM","top":611,"left":364,"w":327,"h":78,"val":""}
+	}
+}
