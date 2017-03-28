@@ -39,4 +39,14 @@
     <servlet-name>RefererServlet</servlet-name>
     <url-pattern>/RefererServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>marchine</display-name>
+    <servlet-name>marchine</servlet-name>
+    <servlet-class>web.MarchineServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>marchine</servlet-name>
+    <url-pattern>/marchine</url-pattern>
+  </servlet-mapping>
 </web-app>

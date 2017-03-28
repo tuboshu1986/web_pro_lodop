@@ -11,34 +11,13 @@
 	$(function(){
 		//alert();
 	});
-	
-	function showLicense(licenseName){
-		
-		var ele='<object classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" width="100%" height="600" border="0"><param name="SRC" id="panel_object" value="hear"><embed width="100%" id="panel_embed"  height="600" src="hear"> </embed></object>';
-		
-		//alert(licenseName);
-		$("#licensename").val(licenseName);
-		
-		ele=ele.replace(/hear/g,"/ssh/license_licensePrintPre.action?licenseName="+licenseName);
-		$("#panel_show").html(ele);
-		
-		$.ajax({
-			url:'/ssh/license_licensePrintPre1.action?licenseName='+licenseName,
-			error:function(){
-				alert("请求出错");
-			},
-			success:function(data){
-				//var obj=eval(data);
-				$("#width").val(data.width);
-				$("#height").val(data.height);
-			},
-			dataType:"json"
-		});
-	}
-	
+
+	var x=0,y=0;
 	function print(){
 		var LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));  
+		//var printerIndex = LODOP.SELECT_PRINTER();
 		LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_按网址打印");
+		LODOP.SET_SHOW_MODE ("PREVIEW_IN_BROWSE",true);
 		var width=794;
 		var height=1123;
 		var pageWidth=794+35;
@@ -46,8 +25,14 @@
 		var url="images/bk.png";
 		LODOP.set_print_pagesize(1,pageWidth+"px",pageHeight+"px",null);
 		//LODOP.ADD_PRINT_BARCODE(elem.top,elem.left,elem.w,elem.h,"Code93",elem.val);
+		LODOP.SET_PRINT_STYLE("Alignment",1);
+		
+		LODOP.ADD_PRINT_TEXT(0,0,100,50,"aaaaa");
 		LODOP.ADD_PRINT_RECT(100,100,300,300,0,1);
-		LODOP.ADD_PRINT_BARCODE(100,100,320,320,"QRCode","http://szjspx.com:58081/elicenseAdmin/");
+		LODOP.SET_PRINT_STYLE("Stretch",1);
+		x=parseInt(x==undefined||x==""?0:x);
+		y=parseInt(y==undefined||y==""?0:y);
+		LODOP.ADD_PRINT_BARCODE(100+y,100+x,300,300,"QRCode","http://szjspx.com:58081/elicenseAdmin/");
 		
 		//LODOP.SET_SHOW_MODE("PREVIEW_IN_BROWSE",1);
 		//LODOP.SET_SHOW_MODE("HIDE_PAPER_BOARD",1);
@@ -61,34 +46,29 @@
 		 */
 	}
 	
-	function print1(){
-		var LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));  
-		LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_按网址打印");
-		LODOP.set_print_pagesize(1,"1024px","745px",null);
-		LODOP.ADD_PRINT_RECT(0,0,"100%","100%",0,1);
-		//LODOP.ADD_PRINT_IMAGE(0,0,"1024px","745px","<img border='1' src='C:\\Users\\Administrator\\Pictures\\11_2.jpg' />");
-		LODOP.SET_PRINT_STYLEA(1,"HOrient",3);
-		LODOP.SET_PRINT_STYLEA(1,"VOrient",3);
-		LODOP.PREVIEW();	
+	function setXY(){
+		x = document.getElementById("xxx").value;
+		y = document.getElementById("yyy").value;
+		print();
 	}
 	
 </script>
-<object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0> 
-	<embed id="LODOP_EM" type="application/x-print-lodop" width="0" height="0" pluginspage="install_lodop.exe"></embed>
-</object> 
 </head>
 <body>
-
 <div>
 	<div id="tools">		
-		<button onclick="print()">打印预览</button>
-		<button onclick="print1()">打印矩形</button>
-		
+		<p><button onclick="print()">打印预览</button></p>
+		<p>
+			x:<input type="text" id="xxx"/>
+			y:<input type="text" id="yyy"/>
+			<button onclick="setXY()">设置</button>
+		</p>
 	</div>
-	<p id="designScript">
-	
-	</p>
 </div>
+
+<object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0> 
+	<embed id="LODOP_EM" type="application/x-print-lodop" width="800" height="1000" pluginspage="install_lodop.exe"></embed>
+</object> 
 
 </body>
 </html>
