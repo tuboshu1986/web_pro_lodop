@@ -1,67 +1,40 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
+import java.util.concurrent.*;
 
 public class CollectionTest {
+	public static LinkedBlockingQueue<String> deque = new LinkedBlockingQueue<String>();
+	private static int index = 0;
+	
 	public static void main(String[] args) {
-		Long a=0l,b=0l;
-		
-		
-		LinkedList<String> list = new LinkedList<String>();
-		System.out.println("++++");
-		a = new Date().getTime();
-		for (int i = 0; i < 10000; i++) {
-			list.add(i+"");
+		for(int i=0;i<50;i++){
+			deque.add(i+"");
 		}
-		b = new Date().getTime();
-		System.out.println(b-a);
 		
-		ArrayList<String> al = new ArrayList<String>();
-		System.out.println("++++");
-		a = new Date().getTime();
-		for (int i = 0; i < 10000; i++) {
-			al.add(i+"");
+		final ExecutorService es = Executors.newFixedThreadPool(3);
+		for(int i=0;i<3;i++){
+			es.execute(new Runnable() {
+				@Override
+				public void run() {
+					while(true){
+						String name = Thread.currentThread().getName();
+						String val = deque.poll();
+						if(val==null){
+							es.shutdown();
+							break;
+						}
+						System.out.println(index+":::"+name+":::"+val);
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			});
 		}
-		b = new Date().getTime();
-		System.out.println(b-a);
-		
-		
-		
-		System.out.println("----");
-		a = new Date().getTime();
-		for (int i = 0; i < 10000; i++) {
-			list.get(i);
-		}
-		b = new Date().getTime();
-		System.out.println(b-a);
-		
-		System.out.println("----");
-		a = new Date().getTime();
-		for (int i = 0; i < 10000; i++) {
-			al.add(i+"");
-		}
-		b = new Date().getTime();
-		System.out.println(b-a);
-		
-		
-
-		System.out.println("++++");
-		a = new Date().getTime();
-		for (int i = 0; i < 100000; i++) {
-			list.add(0, i+"");
-		}
-		b = new Date().getTime();
-		System.out.println(b-a);
-		
-		System.out.println("++++");
-		a = new Date().getTime();
-		for (int i = 0; i < 100000; i++) {
-			al.add(0, i+"");
-		}
-		b = new Date().getTime();
-		System.out.println(b-a);
-		
 	}
 }
+
+
+

@@ -49,4 +49,14 @@
     <servlet-name>marchine</servlet-name>
     <url-pattern>/marchine</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>sendServlet</display-name>
+    <servlet-name>sendServlet</servlet-name>
+    <servlet-class>web.SendServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sendServlet</servlet-name>
+    <url-pattern>/sendServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
