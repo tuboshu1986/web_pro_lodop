@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="wpl">
+    <output-path>$PROJECT_DIR$/out/wpl</output-path>
+    <root id="root">
+      <element id="dir-copy" path="$PROJECT_DIR$/out/wpl" />
+    </root>
+  </artifact>
+</component>
